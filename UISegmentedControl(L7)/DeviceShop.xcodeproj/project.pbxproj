@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F979AD4D2AC4141600E18E0B /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979AD4C2AC4141600E18E0B /* DeviceController.swift */; };
+		F979AD4F2AC414E900E18E0B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979AD4E2AC414E900E18E0B /* Device.swift */; };
+		F979AD512AC41C4200E18E0B /* ItemReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979AD502AC41C4200E18E0B /* ItemReviewVC.swift */; };
 		F990D3872AC340AC008C9286 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990D3862AC340AC008C9286 /* AppDelegate.swift */; };
 		F990D3892AC340AC008C9286 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990D3882AC340AC008C9286 /* SceneDelegate.swift */; };
 		F990D38B2AC340AC008C9286 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F990D38A2AC340AC008C9286 /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F979AD4C2AC4141600E18E0B /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
+		F979AD4E2AC414E900E18E0B /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		F979AD502AC41C4200E18E0B /* ItemReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReviewVC.swift; sourceTree = "<group>"; };
 		F990D3832AC340AC008C9286 /* DeviceShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F990D3862AC340AC008C9286 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F990D3882AC340AC008C9286 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 		F990D39A2AC343C2008C9286 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F979AD4C2AC4141600E18E0B /* DeviceController.swift */,
+				F979AD4E2AC414E900E18E0B /* Device.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -79,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				F990D38A2AC340AC008C9286 /* ViewController.swift */,
+				F979AD502AC41C4200E18E0B /* ItemReviewVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -155,8 +164,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F990D38B2AC340AC008C9286 /* ViewController.swift in Sources */,
+				F979AD4D2AC4141600E18E0B /* DeviceController.swift in Sources */,
 				F990D3872AC340AC008C9286 /* AppDelegate.swift in Sources */,
 				F990D3892AC340AC008C9286 /* SceneDelegate.swift in Sources */,
+				F979AD4F2AC414E900E18E0B /* Device.swift in Sources */,
+				F979AD512AC41C4200E18E0B /* ItemReviewVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

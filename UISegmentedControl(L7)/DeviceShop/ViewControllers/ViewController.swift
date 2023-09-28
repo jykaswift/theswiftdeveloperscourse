@@ -10,18 +10,60 @@ import UIKit
 class ViewController: UIViewController {
     
     let shopTitle = UILabel()
-    let deviceViews = [UIView]()
+    var itemViews = [UIView]()
     let regularFont = "PingFangHK-Regular"
     let boldFont = "PingFangHK-Semibold"
+    var deviceController = ShopItemController<Device>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var iphone14 = Device(
+            name: "IPhone 14 pro",
+            price: 40213,
+            description: "Смартфон производства корпорации Apple, работающий на базе операционной системы iOS 16 и процессора Apple A15 Bionic. Вычислительный чип которого содержит 16 млрд транзисторов и производится контрактным производителем TSMC по усовершенствованному 4-нанометровому (N4P) техпроцессу."
+        )
+        
+        iphone14.addImageBy(name: "iphone14pro1")
+        iphone14.addImageBy(name: "iphone14pro2")
+        iphone14.addImageBy(name: "iphone14pro3")
+        
+        iphone14.characteristics = [
+            "Дисплей": "6.1 OLED - 1179 x 2556",
+            "Чип": "Apple A16 Bionic",
+            "Камера": "4 (48 MP + 12 MP + 12 MP)",
+            "OS": "iOS 17",
+        ]
+        
+        var googlePixel6 = Device(
+            name: "Google pixel 6",
+            price: 35000,
+            description: "Google Pixel 6 отличается от других смартфонов новым и уникальным дизайном с двойной камерой, которая значительно улучшает качество снимков и видео. Лицевая панель с ярким AMOLED-экраном обеспечивает яркие и реалистичные цвета. Аккумуляторная емкость 4614 мАч и большой объем хранилища дополнительными преимуществами."
+        )
+        
+        googlePixel6.addImageBy(name: "googlepixel6_1")
+        googlePixel6.addImageBy(name: "googlepixel6_2")
+        googlePixel6.addImageBy(name: "googlepixel6_3")
+        
+        googlePixel6.characteristics = [
+            "Дисплей": "6.4/1080x2300 Пикс",
+            "Чип": "Google Tensor",
+            "Камера": "2 (50 MP + 12 MP)",
+            "OS": "Android 13",
+            "Вес": "207 г."
+        ]
+        
+        deviceController.addItem(item: iphone14)
+        deviceController.addItem(item: googlePixel6)
+        
         setUpView()
     }
     
     func setUpView() {
         configureShopTitle()
-        setItemView()
+        for device in deviceController.itemList {
+            setItemViewWith(item: device)
+        }
         
     }
     
@@ -39,8 +81,9 @@ class ViewController: UIViewController {
         
     }
     
-    func setItemView() {
+    func setItemViewWith(item: ShopItem) {
         let itemView = UIView()
+      
         let deviceImageView = UIImageView()
         let deviceTitle = UILabel()
         let devicePrice = UILabel()
@@ -61,10 +104,12 @@ class ViewController: UIViewController {
         )
         
         configureItemView(itemView)
-        configureDeviceImageView(deviceImageView, withImageName: "iphone14pro")
-        configureDeviceTitle(deviceTitle, withTextTitle: "IPhone 14 pro")
-        configureDevicePrice(devicePrice, withTextPrice: 40321)
-        configureDeviceDescription(deviceDescription, withTextDescription: "У iPhone 14 Pro 6,1--дюймовая панель. Пиковая яркость — 2000 нит. Используется небольшой вырез с датчиком фронтальной камеры и системой Face ID.")
+        configureDeviceImageView(deviceImageView, withImageName: item.mainImageName)
+        configureDeviceTitle(deviceTitle, withTextTitle: item.name)
+        configureDevicePrice(devicePrice, withTextPrice: item.price)
+        configureDeviceDescription(deviceDescription, withTextDescription: item.description)
+        
+        itemViews.append(itemView)
 
     }
     
@@ -90,10 +135,10 @@ class ViewController: UIViewController {
             itemView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
-        if deviceViews.isEmpty {
+        if itemViews.isEmpty {
             itemView.topAnchor.constraint(equalTo: shopTitle.bottomAnchor, constant: 30).isActive = true
         } else {
-            itemView.topAnchor.constraint(equalTo: deviceViews.last!.bottomAnchor, constant: 20).isActive = true
+            itemView.topAnchor.constraint(equalTo: itemViews.last!.bottomAnchor, constant: 20).isActive = true
         }
         
         // MARK: Device Image Constraints
@@ -132,8 +177,19 @@ class ViewController: UIViewController {
     }
     
     func configureItemView(_ itemView: UIView) {
-
-       
+        itemView.tag = itemViews.endIndex
+        let tapGestureRecongizer = UITapGestureRecognizer(target: self, action: #selector(onItemViewTapped(target:)))
+        itemView.addGestureRecognizer(tapGestureRecongizer)
+        
+    }
+    
+    @objc func onItemViewTapped(target: UITapGestureRecognizer) {
+        guard let tag = target.view?.tag else { return }
+        let itemReviwVC = ItemReviewVC()
+        let device = deviceController.itemList[tag]
+        itemReviwVC.currentItem = device
+        
+        self.present(itemReviwVC, animated: true)
         
     }
     
