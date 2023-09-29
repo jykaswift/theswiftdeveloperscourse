@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     var itemViews = [UIView]()
     let regularFont = "PingFangHK-Regular"
     let boldFont = "PingFangHK-Semibold"
+    let basketButton = UIButton()
     var deviceController = ShopItemController<Device>()
+    var basket = Basket()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +63,38 @@ class ViewController: UIViewController {
     
     func setUpView() {
         configureShopTitle()
+        configureBasketButton()
         for device in deviceController.itemList {
             setItemViewWith(item: device)
         }
+        
+       
+        configureBasketButton()
+       
+    }
+    
+    func configureBasketButton() {
+        self.view.addSubview(basketButton)
+        basketButton.backgroundColor = .black
+        basketButton.tintColor = .white
+        basketButton.setTitle("Корзина", for: .normal)
+        
+        basketButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            basketButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            basketButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            basketButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            basketButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        basketButton.addTarget(self, action: #selector(basketButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func basketButtonTapped() {
+        let basketVC = BasketVC()
+        basketVC.delegate = self
+        
+        self.present(basketVC, animated: true)
         
     }
     
@@ -81,7 +112,7 @@ class ViewController: UIViewController {
         
     }
     
-    func setItemViewWith(item: ShopItem) {
+    func setItemViewWith(item: any ShopItem) {
         let itemView = UIView()
       
         let deviceImageView = UIImageView()
@@ -127,7 +158,7 @@ class ViewController: UIViewController {
         deviceTitle.translatesAutoresizingMaskIntoConstraints = false
         devicePrice.translatesAutoresizingMaskIntoConstraints = false
         deviceDescription.translatesAutoresizingMaskIntoConstraints = false
-   
+
         // MARK: Device View Constraints
         NSLayoutConstraint.activate([
             itemView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
@@ -174,6 +205,8 @@ class ViewController: UIViewController {
             deviceDescription.topAnchor.constraint(equalTo: devicePrice.bottomAnchor, constant: 0),
             deviceDescription.bottomAnchor.constraint(equalTo: itemView.bottomAnchor, constant: 0)
         ])
+        
+    
     }
     
     func configureItemView(_ itemView: UIView) {
@@ -188,6 +221,7 @@ class ViewController: UIViewController {
         let itemReviwVC = ItemReviewVC()
         let device = deviceController.itemList[tag]
         itemReviwVC.currentItem = device
+        itemReviwVC.delegate = self
         
         self.present(itemReviwVC, animated: true)
         

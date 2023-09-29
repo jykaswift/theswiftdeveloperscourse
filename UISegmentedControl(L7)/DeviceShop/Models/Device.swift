@@ -42,8 +42,7 @@ extension ShopItem {
 }
 
 
-
-class Device: ShopItem, Imageble {
+class Device: ShopItem {
     var imagesNames: [String]?
     
     var characteristics = [String: String]()

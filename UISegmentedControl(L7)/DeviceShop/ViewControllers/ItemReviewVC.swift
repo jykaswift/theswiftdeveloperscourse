@@ -32,6 +32,8 @@ class ItemReviewVC: UIViewController {
     let countSlider = UISlider()
     let countLabel = UILabel()
     
+    weak var delegate: ViewController!
+    
     var currentItem: ShopItem!
 
     override func viewDidLoad() {
@@ -100,6 +102,28 @@ class ItemReviewVC: UIViewController {
         addBasketButton.backgroundColor = .black
         addBasketButton.layer.cornerRadius = 12
         
+        
+        addBasketButton.addTarget(self, action: #selector(addBasketTapped), for: .touchUpInside)
+    }
+    
+     @objc func addBasketTapped(sender: UIButton) {
+        
+        let count = Int(countSlider.value)
+        let totalPrice = count * currentItem.price
+        let basketItem = BasketItem(item: currentItem, count: count, totalPrice: totalPrice)
+        
+        if sender.backgroundColor == .black {
+            sender.backgroundColor = .red
+            sender.setTitle("Удалить из корзины", for: .normal)
+            sender.setImage(UIImage(systemName: "trash.slash"), for: .normal)
+            delegate.basket.addItem(item: basketItem)
+            
+        } else {
+            addBasketButton.setTitle(" \(totalPrice) ₽", for: .normal)
+            addBasketButton.setImage(UIImage(systemName: "basket"), for: .normal)
+            addBasketButton.backgroundColor = .black
+            delegate.basket.deleteItem(item: basketItem)
+        }
         
     }
     

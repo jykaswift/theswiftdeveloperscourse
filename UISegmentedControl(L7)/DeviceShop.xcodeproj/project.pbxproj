@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F917D4CD2AC70439008C1C56 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F917D4CC2AC70439008C1C56 /* Basket.swift */; };
+		F917D4CF2AC708C4008C1C56 /* BasketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F917D4CE2AC708C4008C1C56 /* BasketItem.swift */; };
+		F917D4D12AC70E1C008C1C56 /* BasketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F917D4D02AC70E1C008C1C56 /* BasketVC.swift */; };
 		F979AD4D2AC4141600E18E0B /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979AD4C2AC4141600E18E0B /* DeviceController.swift */; };
 		F979AD4F2AC414E900E18E0B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979AD4E2AC414E900E18E0B /* Device.swift */; };
 		F979AD512AC41C4200E18E0B /* ItemReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F979AD502AC41C4200E18E0B /* ItemReviewVC.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F917D4CC2AC70439008C1C56 /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		F917D4CE2AC708C4008C1C56 /* BasketItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketItem.swift; sourceTree = "<group>"; };
+		F917D4D02AC70E1C008C1C56 /* BasketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketVC.swift; sourceTree = "<group>"; };
 		F979AD4C2AC4141600E18E0B /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 		F979AD4E2AC414E900E18E0B /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		F979AD502AC41C4200E18E0B /* ItemReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReviewVC.swift; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 			children = (
 				F979AD4C2AC4141600E18E0B /* DeviceController.swift */,
 				F979AD4E2AC414E900E18E0B /* Device.swift */,
+				F917D4CC2AC70439008C1C56 /* Basket.swift */,
+				F917D4CE2AC708C4008C1C56 /* BasketItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -88,6 +96,7 @@
 			children = (
 				F990D38A2AC340AC008C9286 /* ViewController.swift */,
 				F979AD502AC41C4200E18E0B /* ItemReviewVC.swift */,
+				F917D4D02AC70E1C008C1C56 /* BasketVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -165,7 +174,10 @@
 			files = (
 				F990D38B2AC340AC008C9286 /* ViewController.swift in Sources */,
 				F979AD4D2AC4141600E18E0B /* DeviceController.swift in Sources */,
+				F917D4CD2AC70439008C1C56 /* Basket.swift in Sources */,
 				F990D3872AC340AC008C9286 /* AppDelegate.swift in Sources */,
+				F917D4D12AC70E1C008C1C56 /* BasketVC.swift in Sources */,
+				F917D4CF2AC708C4008C1C56 /* BasketItem.swift in Sources */,
 				F990D3892AC340AC008C9286 /* SceneDelegate.swift in Sources */,
 				F979AD4F2AC414E900E18E0B /* Device.swift in Sources */,
 				F979AD512AC41C4200E18E0B /* ItemReviewVC.swift in Sources */,
