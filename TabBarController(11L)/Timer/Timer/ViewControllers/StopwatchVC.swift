@@ -14,7 +14,10 @@ class StopwatchVC: UIViewController {
     let lapButton = UIStopWatchButton()
     var timer = Timer()
     var isCounting = false
+    var isReset = false
     var count: Double = 0
+    var lapCounter = 1
+    var lapsList = [UIStackView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +27,46 @@ class StopwatchVC: UIViewController {
     func setUpView() {
         configureUI()
         configureLayout()
-        
     }
     
     func configureUI() {
         configureTimeLabel()
         configureStartButton()
         configureLapButton()
+    }
+    
+    func addLap() {
+        let lapContainer = UIStackView()
+        view.addSubview(lapContainer)
+        let lapLabel = UILabel()
+        lapLabel.text = "Lap \(lapCounter)"
+        lapLabel.textColor = .white
+        lapLabel.font = UIFont.systemFont(ofSize: 16)
+        let timeLabel = UILabel()
+        timeLabel.font = lapLabel.font
+        timeLabel.textColor = .white
+        let currentTiming = milisecondToSecondsAndMinutes(milisecond: count)
+        timeLabel.text = timeInString(minutes: currentTiming.minutes, seconds: currentTiming.seconds, miliseconds: currentTiming.miliseconds)
+        lapContainer.axis = .horizontal
+        lapContainer.distribution = .equalSpacing
+        lapContainer.addArrangedSubview(lapLabel)
+        lapContainer.addArrangedSubview(timeLabel)
+        
+        lapContainer.disableAutoresizingMask()
+        
+        NSLayoutConstraint.activate([
+            lapContainer.leadingAnchor.constraint(equalTo: lapButton.leadingAnchor),
+            lapContainer.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
+        ])
+        
+        if lapsList.isEmpty {
+            lapContainer.topAnchor.constraint(equalTo: lapButton.bottomAnchor, constant: 20).isActive = true
+        } else {
+            lapContainer.topAnchor.constraint(equalTo: lapsList.last!.bottomAnchor, constant: 20).isActive = true
+        }
+        
+        lapContainer.addBottomBorder()
+        lapsList.append(lapContainer)
     }
     
     func configureLapButton() {
@@ -40,6 +76,27 @@ class StopwatchVC: UIViewController {
         lapButton.setTitleColor(.white, for: .normal)
         lapButton.backgroundColor = .lightGray
         lapButton.isEnabled = false
+        
+        lapButton.addTarget(self, action: #selector(lapButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func lapButtonTapped() {
+        if isReset {
+            count = 0
+            timeLabel.text = timeInString(minutes: 0, seconds: 0, miliseconds: 0)
+            for lap in lapsList {
+                lap.removeFromSuperview()
+            }
+            lapsList.removeAll()
+            lapButton.isEnabled = false
+            lapButton.setTitle("Lap", for: .normal)
+            isReset = false
+            lapCounter = 0
+        } else {
+            addLap()
+            lapCounter += 1
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,11 +125,15 @@ class StopwatchVC: UIViewController {
             startButton.setTitle("Stop", for: .normal)
             startButton.backgroundColor = UIColor(red: 51, green: 13, blue: 12)
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerChanged), userInfo: nil, repeats: true)
+            lapButton.isEnabled = true
         } else {
             timer.invalidate()
             startButton.setTitle("Start", for: .normal)
             startButton.setTitleColor(UIColor(red: 52, green: 186, blue: 88), for: .normal)
             startButton.backgroundColor = UIColor(red: 10, green: 42, blue: 20)
+            lapButton.setTitle("Reset", for: .normal)
+            isReset = true
+            
         }
         
         isCounting = !isCounting
@@ -82,8 +143,11 @@ class StopwatchVC: UIViewController {
     @objc func timerChanged() {
         count += 0.01
         let timings = milisecondToSecondsAndMinutes(milisecond: count)
-        timeLabel.text = String(format: "%02d:%02d:%02d", timings.minutes, timings.seconds, timings.miliseconds)
-        
+        timeLabel.text = timeInString(minutes: timings.minutes, seconds: timings.seconds, miliseconds: timings.miliseconds)
+    }
+    
+    func timeInString(minutes: Int, seconds: Int, miliseconds: Int) -> String {
+        String(format: "%02d:%02d:%02d", minutes, seconds, miliseconds)
     }
     
     func milisecondToSecondsAndMinutes(milisecond: Double) -> (minutes: Int, seconds: Int, miliseconds: Int) {
