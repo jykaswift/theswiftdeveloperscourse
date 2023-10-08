@@ -10,8 +10,8 @@ import UIKit
 class StopwatchVC: UIViewController {
     
     let timeLabel = UILabel()
-    let startButton = UIStopWatchButton()
-    let lapButton = UIStopWatchButton()
+    let startButton = UIStopWatchButton(style: .start)
+    let lapButton = UIStopWatchButton(style: .stop)
     var timer = Timer()
     var isCounting = false
     var isReset = false
@@ -72,11 +72,7 @@ class StopwatchVC: UIViewController {
     func configureLapButton() {
         lapButton.disableAutoresizingMask()
         lapButton.setTitle("Lap", for: .normal)
-        lapButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-        lapButton.setTitleColor(.white, for: .normal)
-        lapButton.backgroundColor = .lightGray
         lapButton.isEnabled = false
-        
         lapButton.addTarget(self, action: #selector(lapButtonTapped), for: .touchUpInside)
     }
     
@@ -101,20 +97,13 @@ class StopwatchVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        startButton.layer.cornerRadius = 0.5 * startButton.bounds.size.width
-        startButton.clipsToBounds = true
-        startButton.layer.innerBorder(borderOffset: 2, borderColor: .black, borderWidth: 2)
-        lapButton.layer.cornerRadius = 0.5 * lapButton.bounds.size.width
-        lapButton.clipsToBounds = true
-        lapButton.layer.innerBorder(borderOffset: 2, borderColor: .black, borderWidth: 2)
+        startButton.addInnerBorder()
+        lapButton.addInnerBorder()
     }
     
     func configureStartButton() {
         startButton.disableAutoresizingMask()
         startButton.setTitle("Start", for: .normal)
-        startButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-        startButton.setTitleColor(UIColor(red: 52, green: 186, blue: 88), for: .normal)
-        startButton.backgroundColor = UIColor(red: 10, green: 42, blue: 20)
         startButton.addTarget(self, action: #selector(startButtunTapped), for: .touchUpInside)
     }
     
@@ -126,6 +115,9 @@ class StopwatchVC: UIViewController {
             startButton.backgroundColor = UIColor(red: 51, green: 13, blue: 12)
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerChanged), userInfo: nil, repeats: true)
             lapButton.isEnabled = true
+            lapButton.setTitle("Lap", for: .normal)
+            isReset = false
+
         } else {
             timer.invalidate()
             startButton.setTitle("Start", for: .normal)
@@ -213,6 +205,20 @@ extension CALayer {
 
 class UIStopWatchButton: UIButton {
     
+    enum UITimerButtonStyle {
+        case start
+        case stop
+    }
+    
+    convenience init(style: UITimerButtonStyle) {
+        self.init()
+        if style == .start {
+            configureStart()
+        } else {
+            configureStop()
+        }
+    }
+    
     override open var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? backgroundColor?.withAlphaComponent(0.6) : backgroundColor?.withAlphaComponent(1)
@@ -223,5 +229,24 @@ class UIStopWatchButton: UIButton {
         didSet {
             alpha = isEnabled ? 1.0 : 0.6
         }
+    }
+    
+    func addInnerBorder() {
+        self.layer.cornerRadius = 0.5 * self.bounds.size.width
+        self.clipsToBounds = true
+        self.layer.innerBorder(borderOffset: 2, borderColor: .black, borderWidth: 2)
+    }
+    
+    
+    func configureStart() {
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        self.setTitleColor(UIColor(red: 52, green: 186, blue: 88), for: .normal)
+        self.backgroundColor = UIColor(red: 10, green: 42, blue: 20)
+    }
+    
+    func configureStop() {
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        self.setTitleColor(.white, for: .normal)
+        self.backgroundColor = .systemGray
     }
 }
