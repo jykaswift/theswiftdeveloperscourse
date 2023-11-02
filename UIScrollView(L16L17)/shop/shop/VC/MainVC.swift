@@ -117,8 +117,10 @@ class MainVC: UIViewController {
         imageStackView.addArrangedSubview(createProductViewWith(product: gloves))
     }
     
-    
+   
+
     func createPotentialRequestWith(text: String) -> UIStackView {
+    
         let requestContainer = UIStackView()
         requestContainer.axis = .horizontal
         requestContainer.spacing = 10

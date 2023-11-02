@@ -13,6 +13,7 @@
 		F968E5362AF1232300FB73C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F968E5352AF1232300FB73C5 /* Assets.xcassets */; };
 		F968E5392AF1232300FB73C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F968E5372AF1232300FB73C5 /* LaunchScreen.storyboard */; };
 		F968E5422AF124E200FB73C5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F968E5412AF124E200FB73C5 /* TabBarViewController.swift */; };
+		F97233072AF3FF2400648252 /* BrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97233062AF3FF2400648252 /* BrowserVC.swift */; };
 		F974F24B2AF28DBE000CADA5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F974F24A2AF28DBE000CADA5 /* Product.swift */; };
 		F974F24D2AF29690000CADA5 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F974F24C2AF29690000CADA5 /* DetailVC.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		F968E5382AF1232300FB73C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F968E53A2AF1232300FB73C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F968E5412AF124E200FB73C5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F97233062AF3FF2400648252 /* BrowserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserVC.swift; sourceTree = "<group>"; };
 		F974F24A2AF28DBE000CADA5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F974F24C2AF29690000CADA5 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 				F968E5302AF1232100FB73C5 /* MainVC.swift */,
 				F968E5412AF124E200FB73C5 /* TabBarViewController.swift */,
 				F974F24C2AF29690000CADA5 /* DetailVC.swift */,
+				F97233062AF3FF2400648252 /* BrowserVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				F968E52D2AF1232100FB73C5 /* AppDelegate.swift in Sources */,
 				F968E52F2AF1232100FB73C5 /* SceneDelegate.swift in Sources */,
 				F974F24D2AF29690000CADA5 /* DetailVC.swift in Sources */,
+				F97233072AF3FF2400648252 /* BrowserVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,6 +58,10 @@ class DetailVC: UIViewController {
             imagesScrollView.backgroundColor = .white
         }
         imagesScrollView.horizontalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imagesScrollView.addGestureRecognizer(tapGesture)
+        
         return imagesScrollView
     }()
     
@@ -69,6 +73,12 @@ class DetailVC: UIViewController {
         setupView()
         addActions()
         setupNavBar()
+    }
+    
+    @objc func imageTapped() {
+        let browserVC = BrowserVC()
+        browserVC.modalPresentationStyle = .fullScreen
+        self.present(browserVC, animated: true)
     }
     
     func setupNavBar() {
@@ -166,15 +176,10 @@ class DetailVC: UIViewController {
             imageStackView.heightAnchor.constraint(equalToConstant: 245)
         ])
         
-       
-        
         NSLayoutConstraint.activate([
             firstImage.heightAnchor.constraint(equalTo: imageStackView.heightAnchor),
             firstImage.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor)
         ])
-        
-
-        
         
     }
     

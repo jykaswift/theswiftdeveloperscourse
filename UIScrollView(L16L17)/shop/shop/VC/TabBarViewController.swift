@@ -24,7 +24,7 @@ class TabBarViewController: UITabBarController {
     func setupVC() {
         self.viewControllers = [
             createNavigationCotnrollerWith(rootVC: MainVC(), title: "Купить", image: UIImage(systemName: "macbook.and.iphone")),
-            createNavigationCotnrollerWith(rootVC: MainVC(), title: "Для вас", image: UIImage(systemName: "person.circle")),
+            createNavigationCotnrollerWith(rootVC: BrowserVC(), title: "Для вас", image: UIImage(systemName: "person.circle")),
             createNavigationCotnrollerWith(rootVC: MainVC(), title: "Поиск", image: UIImage(systemName: "magnifyingglass")),
             createNavigationCotnrollerWith(rootVC: MainVC(), title: "Корзина", image: UIImage(systemName: "bag"))
         ]
