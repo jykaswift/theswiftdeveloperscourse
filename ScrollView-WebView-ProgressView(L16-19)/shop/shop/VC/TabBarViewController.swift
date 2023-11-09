@@ -16,15 +16,14 @@ class TabBarViewController: UITabBarController {
     }
     
     func setupTabBar() {
-        tabBar.barStyle = .black
-        tabBar.backgroundColor = UIColor(red: 28, green: 28, blue: 30)
+
     }
     
     
     func setupVC() {
         self.viewControllers = [
             createNavigationCotnrollerWith(rootVC: MainVC(), title: "Купить", image: UIImage(systemName: "macbook.and.iphone")),
-            createNavigationCotnrollerWith(rootVC: BrowserVC(), title: "Для вас", image: UIImage(systemName: "person.circle")),
+            createNavigationCotnrollerWith(rootVC: ForYouVC(), title: "Для вас", image: UIImage(systemName: "person.circle")),
             createNavigationCotnrollerWith(rootVC: MainVC(), title: "Поиск", image: UIImage(systemName: "magnifyingglass")),
             createNavigationCotnrollerWith(rootVC: MainVC(), title: "Корзина", image: UIImage(systemName: "bag"))
         ]

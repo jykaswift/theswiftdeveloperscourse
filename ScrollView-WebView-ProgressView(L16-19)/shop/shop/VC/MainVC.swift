@@ -87,14 +87,20 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black
-        
+
         setupView()
       
     }
     
+ 
+    
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.backgroundColor = UIColor(red: 28, green: 28, blue: 30)
+        self.tabBarController?.tabBar.barStyle = .black
     }
 
     override func viewWillDisappear(_ animated: Bool) {
