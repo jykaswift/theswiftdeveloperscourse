@@ -8,17 +8,26 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVC()
-        setupTabBar()
     }
     
-    func setupTabBar() {
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if StorageManager().bool(forKey: .presentationWasViewed) == nil {
+            startPresentation()
+        }
     }
     
+    private func startPresentation() {
+        let presentationController = PageControllerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        presentationController.modalPresentationStyle = .fullScreen
+        self.present(presentationController, animated: true)
+    }
     
     func setupVC() {
         self.viewControllers = [

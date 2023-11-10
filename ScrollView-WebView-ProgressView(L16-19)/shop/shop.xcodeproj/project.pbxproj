@@ -19,6 +19,8 @@
 		F97CF3022AFCDEAC005A1495 /* ForYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CF3012AFCDEAC005A1495 /* ForYouVC.swift */; };
 		F97CF3042AFD2422005A1495 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CF3032AFD2422005A1495 /* StorageManager.swift */; };
 		F97CF3062AFD533F005A1495 /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97CF3052AFD533F005A1495 /* LoadingVC.swift */; };
+		F9D99A622AFE444800015CED /* PageControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D99A612AFE444800015CED /* PageControllerVC.swift */; };
+		F9D99A642AFE46A400015CED /* PageConrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D99A632AFE46A400015CED /* PageConrainerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		F97CF3012AFCDEAC005A1495 /* ForYouVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouVC.swift; sourceTree = "<group>"; };
 		F97CF3032AFD2422005A1495 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F97CF3052AFD533F005A1495 /* LoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVC.swift; sourceTree = "<group>"; };
+		F9D99A612AFE444800015CED /* PageControllerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerVC.swift; sourceTree = "<group>"; };
+		F9D99A632AFE46A400015CED /* PageConrainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageConrainerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				F97233062AF3FF2400648252 /* BrowserVC.swift */,
 				F97CF3012AFCDEAC005A1495 /* ForYouVC.swift */,
 				F97CF3052AFD533F005A1495 /* LoadingVC.swift */,
+				F9D99A612AFE444800015CED /* PageControllerVC.swift */,
+				F9D99A632AFE46A400015CED /* PageConrainerVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 				F97CF3022AFCDEAC005A1495 /* ForYouVC.swift in Sources */,
 				F97233072AF3FF2400648252 /* BrowserVC.swift in Sources */,
 				F97CF3062AFD533F005A1495 /* LoadingVC.swift in Sources */,
+				F9D99A622AFE444800015CED /* PageControllerVC.swift in Sources */,
+				F9D99A642AFE46A400015CED /* PageConrainerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

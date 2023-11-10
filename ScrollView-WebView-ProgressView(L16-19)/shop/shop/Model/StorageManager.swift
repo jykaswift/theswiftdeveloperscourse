@@ -26,6 +26,7 @@ protocol StorageManagerProtocol {
 final class StorageManager {
     public enum Keys: String {
         case avatarPhoto
+        case presentationWasViewed
     }
 
     private let userDefaults = UserDefaults.standard

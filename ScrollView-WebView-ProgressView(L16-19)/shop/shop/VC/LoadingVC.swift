@@ -35,18 +35,20 @@ class LoadingVC: UIViewController {
     }
     
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
     }
     
     @objc func updateProgress() {
-        progressView.progress += 0.01
+        progressView.progress += 0.1
         UIView.animate(withDuration: 0.3, animations: {
-            self.loadingImage.alpha += 0.01
+            self.loadingImage.alpha += 0.1
         })
         
         if progressView.progress == 1.0 {
             timer.invalidate()
-            self.present(TabBarViewController(), animated: true)
+            let tabBarController = TabBarViewController()
+            tabBarController.modalPresentationStyle = .fullScreen
+            self.present(tabBarController, animated: true)
         }
     }
     
